@@ -1,1 +1,1 @@
-Create repo by Phathit Sriburi
+Create repository by Phathit Sriburi
