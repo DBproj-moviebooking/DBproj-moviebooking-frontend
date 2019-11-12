@@ -106,16 +106,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = [
-  'Technology',
-  'Design',
-  'Culture',
-  'Business',
-  'Politics',
-  'Opinion',
-  'Science',
-  'Health',
-  'Style',
-  'Travel',
+  'Homepage',
+  'Movies',
+  'Cinemas',
+  'Souvenirs',
 ];
 
 const featuredPosts = [
@@ -169,13 +163,16 @@ export default function Blog() {
             noWrap
             className={classes.toolbarTitle}
           >
-            Blog
+            Minor Cineplex
           </Typography>
           <IconButton>
             <SearchIcon />
           </IconButton>
           <Button variant="outlined" size="small">
             Sign up
+          </Button>
+          <Button variant="outlined" size="small">
+            Login
           </Button>
         </Toolbar>
         <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
@@ -200,6 +197,7 @@ export default function Blog() {
               <img
                 style={{ display: 'none' }}
                 src="https://source.unsplash.com/user/erondu"
+                //src="https://d2kektcjb0ajja.cloudfront.net/images/posts/feature_images/000/000/072/large-1466557422-feature.jpg?1466557422"
                 alt="background"
               />
             }
