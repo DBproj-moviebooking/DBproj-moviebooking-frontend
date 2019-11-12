@@ -15,8 +15,8 @@ class MovieCarousel extends React.Component {
         />
         <Carousel.Caption>
         <a className="place_on_link" onClick={()=> {console.log("clicked")} } >
-          <h3>Avenger : EndGame</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>Avengers : EndGame</h3>
+          <p>"I love you 3000."</p>
         </a>
         </Carousel.Caption>
       </Carousel.Item>
@@ -30,7 +30,7 @@ class MovieCarousel extends React.Component {
         <Carousel.Caption>
         <a className="place_on_link" onClick={()=> {console.log("clicked")} } >
           <h3>Blackpanther</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
+          <p>"You haven't seen anything yet."</p>
         </a>
         </Carousel.Caption>
       </Carousel.Item>
@@ -45,8 +45,21 @@ class MovieCarousel extends React.Component {
         <a className="place_on_link" onClick={()=> {console.log("clicked")} } >
           <h3>Pikachu!</h3>
           <p>
-            Praesent commodo cursus magna, vel sceler.
+          "They try to talk to me all the time. All they hear is 'Pika Pika.".
           </p>
+        </a>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="interstellar.jpg?text=Fourth slide&bg=373940"
+          alt="Fourth slide"
+        />
+        <Carousel.Caption>
+        <a className="place_on_link" onClick={()=> {console.log("clicked")} } >
+          <h3>Interstellar</h3>
+          {/* <p>“Mankind was born on Earth. It was never meant to die here.”</p> */}
         </a>
         </Carousel.Caption>
       </Carousel.Item>
