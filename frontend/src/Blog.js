@@ -114,16 +114,16 @@ const sections = [
 
 const featuredPosts = [
   {
-    title: 'Featured post',
+    title: 'Top news',
     date: 'Nov 12',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'ข่าวล่าสุดในวงการภาพยนตร์ ไรก็ได้',
   },
   {
-    title: 'Post title',
-    date: 'Nov 11',
+    title: 'Indy Movies',
+    date: 'Feb 14',
     description:
-      'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      'ใส่คอนเทนท์ของพวกหนังอินดี้',
   },
 ];
 
@@ -154,7 +154,7 @@ export default function Blog() {
       <CssBaseline />
       <Container maxWidth="lg">
         <Toolbar className={classes.toolbar}>
-          <Button size="small">Subscribe</Button>
+          <Button size="small">Write a Review</Button>
           <Typography
             component="h2"
             variant="h5"
@@ -206,11 +206,11 @@ export default function Blog() {
               <Grid item md={6}>
                 <div className={classes.mainFeaturedPostContent}>
                   <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                    Title of a longer featured blog post
+                    Minor Cineplex Spotlight
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                    Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what&apos;s most interesting in this post&apos;s contents.
+                    New Release of Movie from Disney!
+                    FrozenII is Theatres now!!
                   </Typography>
                   <Link variant="subtitle1" href="#">
                     Continue reading…
