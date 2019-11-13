@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
     backgroundImage: 'url(/Black_Panther.jpg)',
-    height: '400px',
+    height: '500px',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
