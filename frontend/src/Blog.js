@@ -20,6 +20,8 @@ import Markdown from './Markdown';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
+import Header from '';
+import { bgcolor } from '@material-ui/system';
 
 function Copyright() {
   return (
@@ -34,16 +36,27 @@ function Copyright() {
   );
 }
 
+const bgColors = { "Grey": "#747474",
+                    "Ltgreen": "#65CCB8",
+                    "Mintgreen": "#57BA98",
+                    "Green": "#3B945E",
+                    "White": "#F2F2F2",
+                    "Yellow": "#F6BB42",
+};
+
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
+    backgroundColor: bgColors.Grey
   },
   toolbarTitle: {
     flex: 1,
+    backgroundColor: bgColors.Grey
   },
   toolbarSecondary: {
     justifyContent: 'space-between',
     overflowX: 'auto',
+    backgroundColor: bgColors.Grey
   },
   toolbarLink: {
     padding: theme.spacing(1),
@@ -78,9 +91,12 @@ const useStyles = makeStyles(theme => ({
   },
   mainGrid: {
     marginTop: theme.spacing(3),
+    backgroundColor: bgColors.Grey,
   },
   card: {
     display: 'flex',
+    backgroundColor: bgColors.Grey,
+    color: bgColors.White
   },
   cardDetails: {
     flex: 1,
@@ -155,8 +171,9 @@ export default function Blog() {
       <CssBaseline />
       <Container maxWidth="lg">
         <Toolbar className={classes.toolbar}>
-          <Button size="small">Write a Review</Button>
+          <Button size="small" style={{color: bgColors.White}}>Write a Review</Button>
           <Typography
+            style={{color: bgColors.White/*, backgroundColor: bgColors.Mintgreen*/}}
             component="h2"
             variant="h5"
             color="inherit"
@@ -167,18 +184,19 @@ export default function Blog() {
             Minor Cineplex
           </Typography>
           <IconButton>
-            <SearchIcon />
+            <SearchIcon style={{color: bgColors.White}}/>
           </IconButton>
-          <Button variant="outlined" size="small">
+          <Button variant="outlined" size="small" style={{color: bgColors.White, backgroundColor: bgColors.Mintgreen}}>
             Sign up
           </Button>
-          <Button variant="outlined" size="small">
+          <Button variant="outlined" size="small" style={{color: bgColors.White, backgroundColor: bgColors.Mintgreen}}>
             Login
           </Button>
         </Toolbar>
         <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
           {sections.map(section => (
             <Link
+              style={{color: bgColors.White}}
               color="inherit"
               noWrap
               key={section}
@@ -212,7 +230,7 @@ export default function Blog() {
                     New Release of Movie from Disney!
                     FrozenII is Theatres now!!
                   </Typography>
-                  <Link variant="subtitle1" href="#">
+                  <Link variant="subtitle1" href="#" style={{color: bgColors.LtGreen}}>
                     Continue reading…
                   </Link>
                 </div>
@@ -237,7 +255,7 @@ export default function Blog() {
                         <Typography variant="subtitle1" paragraph>
                           {post.description}
                         </Typography>
-                        <Typography variant="subtitle1" color="primary">
+                        <Typography variant="subtitle1" color="primary" style={{color: bgColors.Ltgreen}}>
                           Continue reading...
                         </Typography>
                       </CardContent>
@@ -245,7 +263,7 @@ export default function Blog() {
                     <Hidden xsDown>
                       <CardMedia
                         className={classes.cardMedia}
-                        image="https://source.unsplash.com/random"
+                        image="./Ryan_Gosling.jpg"
                         title="Image title"
                       />
                     </Hidden>
