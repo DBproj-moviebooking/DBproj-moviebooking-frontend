@@ -124,6 +124,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
+const link = ["/homepage","/movie","/cinema","/souvenir"];
+const buttons = [{label: 'Homepage', path: '/homepage'},
+                {label: 'Movies', path: '/movies'},
+                {label: 'Cinemas', path: '/cinema'},
+                {lable: 'Souvenirs', path: '/souvenir'}];
 
 const featuredPosts = [
   {
@@ -210,17 +215,17 @@ export default function Blog() {
           variant="dense"
           className={classes.toolbarSecondary}
         >
-          {sections.map(section => (
+          {buttons.map(({label, path}) => (
             <Link
               style={{ color: bgColors.White }}
               color="inherit"
               noWrap
-              key={section}
+              key={label}
               variant="body2"
-              href="#"
+              href={path}
               className={classes.toolbarLink}
             >
-              {section}
+              {label}
             </Link>
           ))}
         </Toolbar>
