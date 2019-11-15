@@ -48,7 +48,7 @@ const bgColors = {
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: bgColors.Grey
+    backgroundColor: bgColors.Mintgreen
   },
   toolbarTitle: {
     flex: 1,
@@ -124,11 +124,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
-const link = ["/","/movie","/cinema","/souvenir"];
+const link = ["/homepage","/movie","/cinema","/souvenir"];
 const buttons = [{label: 'Homepage', path: '/homepage'},
-                {label: 'Movies', path: '/movie'},
+                {label: 'Movies', path: '/movies'},
                 {label: 'Cinemas', path: '/cinema'},
-                {label: 'Souvenirs', path: '/souvenir'}];
+                {lable: 'Souvenirs', path: '/souvenir'}];
 
 const featuredPosts = [
   {
@@ -162,7 +162,7 @@ const archives = [
 
 const social = ["GitHub", "Twitter", "Facebook"];
 
-export default function Blog() {
+export default function Movie() {
   const classes = useStyles();
 
   return (
@@ -173,19 +173,6 @@ export default function Blog() {
           <Button size="small" style={{ color: bgColors.White }}>
             Write a Review
           </Button>
-          <Typography
-            style={{
-              color: bgColors.White /*, backgroundColor: bgColors.Mintgreen*/
-            }}
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Minor Cineplex
-          </Typography>
           <IconButton>
             <SearchIcon style={{ color: bgColors.White }} />
           </IconButton>
@@ -231,46 +218,11 @@ export default function Blog() {
         </Toolbar>
         <main>
           {/* Main featured post */}
-          <Paper className={classes.mainFeaturedPost}>
-            {/* Increase the priority of the hero background image */}
-            {
-              <img
-                style={{ display: "none" }}
-                src="./Black_Panther.jpg"
-                alt="background"
-              />
-            }
-            <div className={classes.overlay} />
-            <Grid container>
-              <Grid item md={6}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography
-                    component="h1"
-                    variant="h3"
-                    color="inherit"
-                    gutterBottom
-                  >
-                    Minor Cineplex Spotlight
-                  </Typography>
-                  <Typography variant="h5" color="inherit" paragraph>
-                    New Release of Movie from Disney! FrozenII is Theatres now!!
-                  </Typography>
-                  <Link
-                    variant="subtitle1"
-                    href="#"
-                    style={{ color: bgColors.LtGreen }}
-                  >
-                    Continue reading…
-                  </Link>
-                </div>
-              </Grid>
-            </Grid>
-          </Paper>
           {/* End main featured post */}
           {/* Sub featured posts */}
           <Grid container spacing={4}>
             {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
+              <Grid item key={post.title} xs={0} md={10}>
                 <CardActionArea component="a" href="#">
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>

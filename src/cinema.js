@@ -48,7 +48,7 @@ const bgColors = {
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: bgColors.Grey
+    backgroundColor: bgColors.Mintgreen
   },
   toolbarTitle: {
     flex: 1,
@@ -92,7 +92,7 @@ const useStyles = makeStyles(theme => ({
   },
   mainGrid: {
     marginTop: theme.spacing(3),
-    backgroundColor: bgColors.Grey
+    backgroundColor: bgColors.Yellow
   },
   card: {
     display: "flex",
@@ -126,9 +126,9 @@ const useStyles = makeStyles(theme => ({
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
 const link = ["/","/movie","/cinema","/souvenir"];
 const buttons = [{label: 'Homepage', path: '/homepage'},
-                {label: 'Movies', path: '/movie'},
+                {label: 'Movies', path: '/movies'},
                 {label: 'Cinemas', path: '/cinema'},
-                {label: 'Souvenirs', path: '/souvenir'}];
+                {lable: 'Souvenirs', path: '/souvenir'}];
 
 const featuredPosts = [
   {
@@ -162,7 +162,7 @@ const archives = [
 
 const social = ["GitHub", "Twitter", "Facebook"];
 
-export default function Blog() {
+export default function Cinema() {
   const classes = useStyles();
 
   return (
