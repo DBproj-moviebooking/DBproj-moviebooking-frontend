@@ -20,8 +20,6 @@ import Markdown from "./Markdown";
 import post1 from "./blog-post.1.md";
 import post2 from "./blog-post.2.md";
 import post3 from "./blog-post.3.md";
-import Header from "./utils/Header";
-import { bgcolor } from "@material-ui/system";
 
 function Copyright() {
   return (
@@ -128,7 +126,7 @@ const link = ["/homepage","/movie","/cinema","/souvenir"];
 const buttons = [{label: 'Homepage', path: '/homepage'},
                 {label: 'Movies', path: '/movies'},
                 {label: 'Cinemas', path: '/cinema'},
-                {lable: 'Souvenirs', path: '/souvenir'}];
+                {label: 'Souvenirs', path: '/souvenir'}];
 
 const featuredPosts = [
   {
