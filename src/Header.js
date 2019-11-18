@@ -153,7 +153,7 @@ export default function Header() {
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <Button size="small" style={{ color: bgColors.White }}>
+        <Button size="small" href="/review" style={{ color: bgColors.White }}>
           Write a Review
         </Button>
         <Typography

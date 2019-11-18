@@ -17,9 +17,6 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import Markdown from "./Markdown";
-// import post1 from "./blog-post.1.md";
-// import post2 from "./blog-post.2.md";
-// import post3 from "./blog-post.3.md";
 import Header from "./Header";
 import { TextareaAutosize } from "@material-ui/core";
 
@@ -121,9 +118,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0)
   },
-  Header: {
-    
-  }
+  Header: {}
 }));
 
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
@@ -299,7 +294,13 @@ export default function Blog() {
                 Archives
               </Typography>
               {archives.map(archive => (
-                <Link display="block" variant="body1" href="#" key={archive} style={{color: bgColors.Ltgreen}}>
+                <Link
+                  display="block"
+                  variant="body1"
+                  href="#"
+                  key={archive}
+                  style={{ color: bgColors.Ltgreen }}
+                >
                   {archive}
                 </Link>
               ))}
@@ -311,7 +312,13 @@ export default function Blog() {
                 Social
               </Typography>
               {social.map(network => (
-                <Link display="block" variant="body1" href="#" key={network} style={{color: bgColors.Ltgreen}}>
+                <Link
+                  display="block"
+                  variant="body1"
+                  href="#"
+                  key={network}
+                  style={{ color: bgColors.Ltgreen }}
+                >
                   {network}
                 </Link>
               ))}
