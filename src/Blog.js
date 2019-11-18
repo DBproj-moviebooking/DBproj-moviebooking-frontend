@@ -17,9 +17,11 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import Markdown from "./Markdown";
-import post1 from "./blog-post.1.md";
-import post2 from "./blog-post.2.md";
-import post3 from "./blog-post.3.md";
+// import post1 from "./blog-post.1.md";
+// import post2 from "./blog-post.2.md";
+// import post3 from "./blog-post.3.md";
+import Header from "./Header";
+import { TextareaAutosize } from "@material-ui/core";
 
 function Copyright() {
   return (
@@ -118,30 +120,39 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0)
+  },
+  Header: {
+    
   }
 }));
 
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
-const link = ["/homepage","/movie","/cinema","/souvenir"];
-const buttons = [{label: 'Homepage', path: '/homepage'},
-                {label: 'Movies', path: '/movies'},
-                {label: 'Cinemas', path: '/cinema'},
-                {label: 'Souvenirs', path: '/souvenir'}];
+const link = ["/homepage", "/movie", "/cinema", "/souvenir"];
+const buttons = [
+  { label: "Homepage", path: "./" },
+  { label: "Movies", path: "/movies" },
+  { label: "Cinemas", path: "/cinema" },
+  { label: "Souvenirs", path: "/souvenir" }
+];
 
 const featuredPosts = [
   {
     title: "Top news",
     date: "Nov 12",
-    description: "ข่าวล่าสุดในวงการภาพยนตร์ ไรก็ได้"
+    description:
+      "Check out Ryan Gosling evolution since 2004 til today. Did you know that He is Canadian?",
+    image: "./Ryan_Gosling.jpg"
   },
   {
     title: "Indy Movies",
     date: "Feb 14",
-    description: "ใส่คอนเทนท์ของพวกหนังอินดี้"
+    description:
+      "Here comes the era of Indy Movies. Checkout Inside Llewyn Davis.",
+    image: "./Inside_Llewyn_Davis.jpg"
   }
 ];
 
-const posts = [post1, post2, post3];
+const posts = ["Paragon Cineplex", "House RCA", "Central World SF Cinema"];
 
 const archives = [
   "March 2020",
@@ -166,67 +177,8 @@ export default function Blog() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Toolbar className={classes.toolbar}>
-          <Button size="small" style={{ color: bgColors.White }}>
-            Write a Review
-          </Button>
-          <Typography
-            style={{
-              color: bgColors.White /*, backgroundColor: bgColors.Mintgreen*/
-            }}
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Minor Cineplex
-          </Typography>
-          <IconButton>
-            <SearchIcon style={{ color: bgColors.White }} />
-          </IconButton>
-          <Button
-            variant="outlined"
-            size="small"
-            style={{
-              color: bgColors.White,
-              backgroundColor: bgColors.Mintgreen
-            }}
-          >
-            Sign up
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            style={{
-              color: bgColors.White,
-              backgroundColor: bgColors.Mintgreen
-            }}
-          >
-            Login
-          </Button>
-        </Toolbar>
-        <Toolbar
-          component="nav"
-          variant="dense"
-          className={classes.toolbarSecondary}
-        >
-          {buttons.map(({label, path}) => (
-            <Link
-              style={{ color: bgColors.White }}
-              color="inherit"
-              noWrap
-              key={label}
-              variant="body2"
-              href={path}
-              className={classes.toolbarLink}
-            >
-              {label}
-            </Link>
-          ))}
-        </Toolbar>
+      <Container>
+        <Header />
         <main>
           {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>
@@ -251,7 +203,8 @@ export default function Blog() {
                     Minor Cineplex Spotlight
                   </Typography>
                   <Typography variant="h5" color="inherit" paragraph>
-                    New Release of Movie from Disney! FrozenII is Theatres now!!
+                    New Release of Movie from Marvel! Black Panther is in
+                    Theatres now!!
                   </Typography>
                   <Link
                     variant="subtitle1"
@@ -267,20 +220,20 @@ export default function Blog() {
           {/* End main featured post */}
           {/* Sub featured posts */}
           <Grid container spacing={4}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
+            {featuredPosts.map(({ title, date, description, image }) => (
+              <Grid item key={title} xs={12} md={6}>
                 <CardActionArea component="a" href="#">
                   <Card className={classes.card}>
                     <div className={classes.cardDetails}>
                       <CardContent>
                         <Typography component="h2" variant="h5">
-                          {post.title}
+                          {title}
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
+                          {date}
                         </Typography>
                         <Typography variant="subtitle1" paragraph>
-                          {post.description}
+                          {description}
                         </Typography>
                         <Typography
                           variant="subtitle1"
@@ -294,8 +247,8 @@ export default function Blog() {
                     <Hidden xsDown>
                       <CardMedia
                         className={classes.cardMedia}
-                        image="./Ryan_Gosling.jpg"
-                        title="Image title"
+                        image={image}
+                        title={title}
                       />
                     </Hidden>
                   </Card>
@@ -307,8 +260,12 @@ export default function Blog() {
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* Main content */}
             <Grid item xs={12} md={8}>
-              <Typography variant="h6" gutterBottom>
-                From the Firehose
+              <Typography
+                variant="h6"
+                gutterBottom
+                style={{ color: bgColors.White }}
+              >
+                Cinema Near you
               </Typography>
               <Divider />
               {posts.map(post => (
@@ -328,9 +285,10 @@ export default function Blog() {
                   About
                 </Typography>
                 <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis
-                  consectetur purus sit amet fermentum. Aenean lacinia bibendum
-                  nulla sed consectetur.
+                  Minor Cineplex is an online database of information related to
+                  movie ticket. Allow you to purchase movie ticket, buy movie
+                  souvenirs, locate cinema nearby, and write a movie review. All
+                  online!
                 </Typography>
               </Paper>
               <Typography
@@ -341,7 +299,7 @@ export default function Blog() {
                 Archives
               </Typography>
               {archives.map(archive => (
-                <Link display="block" variant="body1" href="#" key={archive}>
+                <Link display="block" variant="body1" href="#" key={archive} style={{color: bgColors.Ltgreen}}>
                   {archive}
                 </Link>
               ))}
@@ -353,7 +311,7 @@ export default function Blog() {
                 Social
               </Typography>
               {social.map(network => (
-                <Link display="block" variant="body1" href="#" key={network}>
+                <Link display="block" variant="body1" href="#" key={network} style={{color: bgColors.Ltgreen}}>
                   {network}
                 </Link>
               ))}
@@ -374,8 +332,8 @@ export default function Blog() {
             color="textSecondary"
             component="p"
           >
-            This website is created only for Database subject purpose.
-            Not for profit.
+            This website is created only for Database subject purpose. Not for
+            profit.
           </Typography>
           <Copyright />
         </Container>
