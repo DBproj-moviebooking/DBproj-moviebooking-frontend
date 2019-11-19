@@ -22,6 +22,8 @@ import {
   KeyboardDatePicker
 } from "@material-ui/pickers";
 
+const searchDate = new Date();
+
 const suggestions = [
   { label: "Avenger" },
   { label: "ToyStory" },

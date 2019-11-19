@@ -26,6 +26,15 @@ function Copyright() {
   );
 }
 
+const bgColors = {
+  Grey: "#747474",
+  Ltgreen: "#65CCB8",
+  Mintgreen: "#57BA98",
+  Green: "#3B945E",
+  White: "#F2F2F2",
+  Yellow: "#F6BB42"
+};
+
 const useStyles = makeStyles(theme => ({
   "@global": {
     body: {
@@ -97,17 +106,26 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            style={{ backgroundColor: bgColors.Mintgreen }}
           >
             Sign In
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link
+                href="#"
+                variant="body2"
+                style={{ color: bgColors.Mintgreen }}
+              >
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link
+                href="#"
+                variant="body2"
+                style={{ color: bgColors.Mintgreen }}
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

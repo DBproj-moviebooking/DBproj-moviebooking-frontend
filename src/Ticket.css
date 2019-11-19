@@ -1,0 +1,51 @@
+#ticket_page_title {
+  font-size: 40px;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  h1 {
+    font-size: 18px;
+    margin: 30px auto;
+  }
+  
+  h1,
+  h3 {
+    text-align: center;
+  }
+  
+  .container {
+    background-color: #e0ebeb;
+    display: flex;
+    align-items: center;
+    min-height: 125px;
+    justify-content: center;
+    padding: 15px;
+  }
+  
+  .box {
+    background-color: whitesmoke;
+    /* border: 1px solid grey; */
+    display: flex;
+    align-items: center;
+    min-height: 125px;
+    justify-content: center;
+    width: 430px; 
+    height: 150px;
+    margin: 25px;
+  }
+  
+  #wrap {
+      flex-wrap: wrap;
+  }
+  
+  #nowrap {
+      flex-wrap: nowrap;
+  }
+  
+  #reverse {
+      flex-wrap: wrap-reverse;
+  }
+  
