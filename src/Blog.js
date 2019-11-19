@@ -173,7 +173,7 @@ export default function Blog() {
     <React.Fragment>
       <CssBaseline />
       <Container>
-        <Header />
+        <Header /> 
         <main>
           {/* Main featured post */}
           <Paper className={classes.mainFeaturedPost}>

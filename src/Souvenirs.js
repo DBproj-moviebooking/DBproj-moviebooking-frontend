@@ -249,7 +249,7 @@ export default function Album() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-        Online Movie Ticket Database
+          Online Movie Ticket Database
         </Typography>
         <Typography
           variant="subtitle1"
@@ -258,7 +258,7 @@ export default function Album() {
           component="p"
         >
           This website is created only for Database subject purpose. Not for
-            profit.
+          profit.
         </Typography>
         <Copyright />
       </footer>
