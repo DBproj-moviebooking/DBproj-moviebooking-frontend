@@ -16,12 +16,10 @@ import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
-import Markdown from "./Markdown";
-import post1 from "./blog-post.1.md";
-import post2 from "./blog-post.2.md";
-import post3 from "./blog-post.3.md";
+import Checkbox from '@material-ui/core/Checkbox';
 import Header from "./utils/Header";
 import { bgcolor } from "@material-ui/system";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 function Copyright() {
   return (
@@ -48,7 +46,7 @@ const bgColors = {
 const useStyles = makeStyles(theme => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: bgColors.Mintgreen
+    backgroundColor: bgColors.Grey
   },
   toolbarTitle: {
     flex: 1,
@@ -63,58 +61,93 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     flexShrink: 0
   },
-  mainFeaturedPost: {
-    position: "relative",
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
-    backgroundImage: "url(/Black_Panther.jpg)",
-    height: "500px",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center"
-  },
-  overlay: {
-    position: "absolute",
-    top: 0,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    backgroundColor: "rgba(0,0,0,.3)"
-  },
-  mainFeaturedPostContent: {
-    position: "relative",
-    padding: theme.spacing(3),
-    [theme.breakpoints.up("md")]: {
-      padding: theme.spacing(6),
-      paddingRight: 0
-    }
-  },
-  mainGrid: {
-    marginTop: theme.spacing(3),
-    backgroundColor: bgColors.Yellow
-  },
-  card: {
-    display: "flex",
+  seatScreen: {
+    height: "5vh",
+    marginTop: theme.spacing(1),
     backgroundColor: bgColors.Grey,
-    color: bgColors.White
+    color:"white",
+    textAlign:"center"
   },
-  cardDetails: {
-    flex: 1
+  seatRow: {
+    height: "6vh",
+    marginTop: theme.spacing(1),
+    backgroundColor: bgColors.Mintgreen,
+    color:"white",
+    textAlign:"center",
   },
-  cardMedia: {
-    width: 160
+  seatCol: {
+    backgroundColor:"white",
+    textAlign:"center",
+    justifyContent: "space-between"
   },
-  markdown: {
-    ...theme.typography.body2,
-    padding: theme.spacing(3, 0)
+  seatButton: {
+    marginTop: theme.spacing(1),
+    backgroundColor: "white",
+    alignItems: "center",
+    position: "relative",
+    justifyContent: "space-between"
   },
-  sidebarAboutBox: {
-    padding: theme.spacing(2),
-    backgroundColor: theme.palette.grey[200]
+  seatColNav: {
+    height: Button.size,
+    marginTop: theme.spacing(4),
+    backgroundColor: bgColors.Mintgreen,
+    color:"white",
+    textAlign:"center",
+    justifyContent: "space-between"
   },
-  sidebarSection: {
-    marginTop: theme.spacing(3)
+  mainButton: {
+    width: "10vh",
+    fontWeight: "Bold",
+    backgroundColor: bgColors.Ltgreen,
+    color: "white",
+    justify: 'space-between',
+    display:'space-between',
+  },
+  mainCanvas: {
+    flexGrow: 1,
+    backgroundColor: "white",
+    marginTop: theme.spacing(5),
+    padding: theme.spacing(2, 2),
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  paperImage: {
+    backgroundImage: `url(${"./Ryan_Gosling.jpg"})`,
+    backgroundSize: "cover",
+    height: "30vh",
+    position: "relative",
+    margin: ".5vh"
+  },
+  paperDetail: {
+    backgroundColor: "red",
+    height: "50vh",
+    position: "relative",
+    margin: "5px"
+  },
+  paperDay: {
+    backgroundColor: "white",
+    flexGrow: 1,
+    height: "5vh",
+    position: "relative",
+    margin: ".5vh"
+  },
+  paperTitle: {
+    backgroundColor: "white",
+    height: "10vh",
+    postiotion: "relative",
+    margin: ".5vh",
+    padding: "2vh",
+    fontSize: "4vh",
+    fontWeight: "Bold"
+  },
+  paperTheatre: {
+    backgroundColor: "white",
+    height: "8vh",
+    position: "relative",
+    margin: ".5vh",
+    fontWeight: "Medium",
+    fontSize: "2.5vh",
+    padding: "2vh"
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -124,46 +157,33 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
-const link = ["/","/movie","/cinema","/souvenir"];
-const buttons = [{label: 'Homepage', path: '/homepage'},
-                {label: 'Movies', path: '/movies'},
-                {label: 'Cinemas', path: '/cinema'},
-                {lable: 'Souvenirs', path: '/souvenir'}];
-
-const featuredPosts = [
-  {
-    title: "Top news",
-    date: "Nov 12",
-    description: "ข่าวล่าสุดในวงการภาพยนตร์ ไรก็ได้"
-  },
-  {
-    title: "Indy Movies",
-    date: "Feb 14",
-    description: "ใส่คอนเทนท์ของพวกหนังอินดี้"
-  }
+const link = ["/", "/movie", "/cinema", "/souvenir"];
+const buttons = [
+  { label: "Homepage", path: "/homepage" },
+  { label: "Movies", path: "/movie" },
+  { label: "Cinemas", path: "/cinema" },
+  { label: "Souvenirs", path: "/souvenir" }
 ];
 
-const posts = [post1, post2, post3];
-
-const archives = [
-  "March 2020",
-  "February 2020",
-  "January 2020",
-  "December 2019",
-  "November 2019",
-  "October 2019",
-  "September 2019",
-  "August 2019",
-  "July 2019",
-  "June 2019",
-  "May 2019",
-  "April 2019"
-];
-
-const social = ["GitHub", "Twitter", "Facebook"];
-
-export default function Cinema() {
+export default function Blog() {
   const classes = useStyles();
+  const [state, setState] = React.useState({
+    bookedA1: true,
+    bookedB1: true,
+    bookedC1: false,
+    bookedD1: false,
+    bookedE1: false,
+
+    checkedA1: true,
+    checkedB1: true,
+    checkedC1: false,
+    checkedD1: false,
+    checkedE1: false,
+  });
+
+  const handleChange = name => event => {
+    setState({ ...state, [name]:event.target.checked});
+  };
 
   return (
     <React.Fragment>
@@ -215,7 +235,7 @@ export default function Cinema() {
           variant="dense"
           className={classes.toolbarSecondary}
         >
-          {buttons.map(({label, path}) => (
+          {buttons.map(({ label, path }) => (
             <Link
               style={{ color: bgColors.White }}
               color="inherit"
@@ -230,138 +250,161 @@ export default function Cinema() {
           ))}
         </Toolbar>
         <main>
-          {/* Main featured post */}
-          <Paper className={classes.mainFeaturedPost}>
-            {/* Increase the priority of the hero background image */}
-            {
-              <img
-                style={{ display: "none" }}
-                src="./Black_Panther.jpg"
-                alt="background"
-              />
-            }
-            <div className={classes.overlay} />
-            <Grid container>
-              <Grid item md={6}>
-                <div className={classes.mainFeaturedPostContent}>
-                  <Typography
-                    component="h1"
-                    variant="h3"
-                    color="inherit"
-                    gutterBottom
-                  >
-                    Minor Cineplex Spotlight
-                  </Typography>
-                  <Typography variant="h5" color="inherit" paragraph>
-                    New Release of Movie from Disney! FrozenII is Theatres now!!
-                  </Typography>
-                  <Link
-                    variant="subtitle1"
-                    href="#"
-                    style={{ color: bgColors.LtGreen }}
-                  >
-                    Continue reading…
-                  </Link>
-                </div>
+          <Paper className={classes.mainCanvas}>
+          <Grid
+                container
+                style={{ Height: "30vh", marginBottom: "2vh"}}
+                className={classes.cinema}
+              >
+                <Grid item xs={3}>
+                  <Paper className={classes.paperImage}></Paper>
+                </Grid>
+                <Grid item xs={9}>
+                  <Paper className={classes.paperTitle}>Avenger</Paper>
+                  <Paper className={classes.paperTheatre}>Theatre 1</Paper>
+                  <Paper className={classes.paperTheatre}>8:00-10:20</Paper>
+                </Grid>
               </Grid>
+          </Paper>
+          <Paper className={classes.mainCanvas}>
+          <Grid
+                container
+                className={classes.cinema}
+                style={{ Height: "30vh", marginBottom: "2vh", alignItems:"space-around", flexGrow:1, justify:"flex-end"}}
+              >
+                <Grid item xs={12}>
+                  <Paper className = {classes.seatScreen}>Screen</Paper>
+                </Grid>
+                  
+                <Grid item xs={1}>
+                    <Card className = {classes.seatRow}></Card>
+                    <Card className = {classes.seatColNav}>A</Card>
+                    <Card className = {classes.seatColNav}>B</Card>
+                    <Card className = {classes.seatColNav}>C</Card>
+                    <Card className = {classes.seatColNav}>D</Card>
+                    <Card className = {classes.seatColNav}>E</Card>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>1</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>2</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>3</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>4</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>5</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>6</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>7</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid><Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>8</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>9</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>10</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                <Grid item xs={1}>
+                <Container className = {classes.seatCol}>
+                  <Card className = {classes.seatRow}>11</Card>
+                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
+                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
+                  </Container>
+                </Grid>
+                
+              </Grid>
+              <Grid container justify="space-around">
+              <Button
+                variant="contained"
+                justify="space-around"
+                className={classes.mainButton}
+              >
+                Book
+              </Button>
             </Grid>
           </Paper>
-          {/* End main featured post */}
-          {/* Sub featured posts */}
-          <Grid container spacing={4}>
-            {featuredPosts.map(post => (
-              <Grid item key={post.title} xs={12} md={6}>
-                <CardActionArea component="a" href="#">
-                  <Card className={classes.card}>
-                    <div className={classes.cardDetails}>
-                      <CardContent>
-                        <Typography component="h2" variant="h5">
-                          {post.title}
-                        </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                          {post.date}
-                        </Typography>
-                        <Typography variant="subtitle1" paragraph>
-                          {post.description}
-                        </Typography>
-                        <Typography
-                          variant="subtitle1"
-                          color="primary"
-                          style={{ color: bgColors.Ltgreen }}
-                        >
-                          Continue reading...
-                        </Typography>
-                      </CardContent>
-                    </div>
-                    <Hidden xsDown>
-                      <CardMedia
-                        className={classes.cardMedia}
-                        image="./Ryan_Gosling.jpg"
-                        title="Image title"
-                      />
-                    </Hidden>
-                  </Card>
-                </CardActionArea>
-              </Grid>
-            ))}
-          </Grid>
-          {/* End sub featured posts */}
-          <Grid container spacing={5} className={classes.mainGrid}>
-            {/* Main content */}
-            <Grid item xs={12} md={8}>
-              <Typography variant="h6" gutterBottom>
-                From the Firehose
-              </Typography>
-              <Divider />
-              {posts.map(post => (
-                <Markdown
-                  className={classes.markdown}
-                  key={post.substring(0, 40)}
-                >
-                  {post}
-                </Markdown>
-              ))}
-            </Grid>
-            {/* End main content */}
-            {/* Sidebar */}
-            <Grid item xs={12} md={4}>
-              <Paper elevation={0} className={classes.sidebarAboutBox}>
-                <Typography variant="h6" gutterBottom>
-                  About
-                </Typography>
-                <Typography>
-                  Etiam porta sem malesuada magna mollis euismod. Cras mattis
-                  consectetur purus sit amet fermentum. Aenean lacinia bibendum
-                  nulla sed consectetur.
-                </Typography>
-              </Paper>
-              <Typography
-                variant="h6"
-                gutterBottom
-                className={classes.sidebarSection}
-              >
-                Archives
-              </Typography>
-              {archives.map(archive => (
-                <Link display="block" variant="body1" href="#" key={archive}>
-                  {archive}
-                </Link>
-              ))}
-              <Typography
-                variant="h6"
-                gutterBottom
-                className={classes.sidebarSection}
-              >
-                Social
-              </Typography>
-              {social.map(network => (
-                <Link display="block" variant="body1" href="#" key={network}>
-                  {network}
-                </Link>
-              ))}
-            </Grid>
-            {/* End sidebar */}
-          </Grid>
         </main>
       </Container>
       {/* Footer */}

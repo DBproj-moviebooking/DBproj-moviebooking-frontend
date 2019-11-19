@@ -8,8 +8,8 @@ import Cinema from "./cinema";
 const routes = [
   { path: "/", component: Blog, exact: true },
   { path: "/Signin", component: SignIn, exact: true },
-  { path: "/movie", component: Movie, exact: true},
-  { path: "/cinemas", component: Cinema, exact: true}
+  { path: "/movie", component: Movie, exact: true },
+  { path: "/cinema", component: Cinema, exact: true }
 ];
 
 export default routes.map((props, index) => {

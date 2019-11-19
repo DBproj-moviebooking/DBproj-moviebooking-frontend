@@ -124,11 +124,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
-const link = ["/","/movie","/cinema","/souvenir"];
-const buttons = [{label: 'Homepage', path: '/homepage'},
-                {label: 'Movies', path: '/movie'},
-                {label: 'Cinemas', path: '/cinema'},
-                {label: 'Souvenirs', path: '/souvenir'}];
+const link = ["/", "/movie", "/cinema", "/souvenir"];
+const buttons = [
+  { label: "Homepage", path: "/homepage" },
+  { label: "Movies", path: "/movie" },
+  { label: "Cinemas", path: "/cinema" },
+  { label: "Souvenirs", path: "/souvenir" }
+];
 
 const featuredPosts = [
   {
@@ -215,7 +217,7 @@ export default function Blog() {
           variant="dense"
           className={classes.toolbarSecondary}
         >
-          {buttons.map(({label, path}) => (
+          {buttons.map(({ label, path }) => (
             <Link
               style={{ color: bgColors.White }}
               color="inherit"
