@@ -8,7 +8,7 @@ export {
 class AboutMovie {
 
     function getAllmovies() {
-        axios.get("Movie/movies").then(response => {
+        axios.get("Movie").then(response => {
             return response.data.data;
         })
     }

@@ -8,7 +8,7 @@ export {
 class AboutSovenir {
 
     function getAllSovenirs() {
-        axios.get("Sovenir/sovenirs").then(response => {
+        axios.get("Sovenir").then(response => {
             return response.data.data;
         })
     }

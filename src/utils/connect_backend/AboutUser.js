@@ -8,7 +8,7 @@ export {
 class AboutUser {
 
     function getAllusers() {
-        axios.get("User/users").then(response => {
+        axios.get("User").then(response => {
             return response.data.data;
         })
     }
