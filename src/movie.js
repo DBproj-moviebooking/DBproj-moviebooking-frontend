@@ -1,4 +1,5 @@
 import React from "react";
+import axois from "axios";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -37,7 +38,17 @@ const suggestions = [
   label: suggestion.label
 }));
 
+function getdata(){
+  axois.get('https://dbproj-backend.herokuapp.com/movie').then((res) => {
+    suggestions.map(suggestion =>({
+      value: res.data.data.id,
+      label: res.data.data.name,
+    }))
+  })
+}
+
 function Copyright() {
+  
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
