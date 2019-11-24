@@ -18,14 +18,25 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Header from "./Header";
+
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from "@material-ui/pickers";
 
-const searchDate = new Date();
-
-const suggestions = []
+const suggestions = [
+  { label: "Avenger" },
+  { label: "ToyStory" },
+  { label: "Batman" },
+  { label: "KungFuHustle" },
+].map(suggestion => ({
+  value: suggestion.label,
+  label: suggestion.label
+}));
 
 function getdata(){
   axois.get('https://dbproj-backend.herokuapp.com/movie').then((res) => {
@@ -90,10 +101,20 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
 
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+
+
   paperImage: {
     backgroundImage: `url(${"./Ryan_Gosling.jpg"})`,
     backgroundSize: "cover",
     height: "30vh",
+    width: "20vh",
     position: "relative",
     margin: ".5vh"
   },
@@ -424,17 +445,24 @@ const buttons = [
 ];
 
 const movie = [
-    {date: Date("2019-11-19"), title: "Avenger", theatre: "1", showtime: ["8:30", "9:30", "12:30","16:30"]},
-    {date: "2019-11-20", title: "ToyStory", theatre: "2", showtime: ["7:20", "8:40", "13:30","17:30"]},
-    {date: "11/19/2019", title: "Batman", theatre: "3", showtime: ["8:30", "9:30", "11:00"]},
-    {date: "11/20/2019", title: "XXX", theatre: "1", showtime: ["8:30", "9:30", "12:30","16:30"]},
-    {date: "11/20/2019", title: "Spiderman", theatre: "2", showtime: ["7:20","17:30"]},
-    {date: "11/20/2019", title: "Oloman", theatre: "3", showtime: ["8:30", "9:30", "11:00"]}
+    {date: new Date("11/19/2019"), title: "Avenger", theatre: "1", showtime: ["8:30", "9:30", "12:30","16:30"], imgurl: `url(${"./moviePoster/avenger.jpg"})`},
+    {date: new Date("11/19/2019"), title: "Toy Story", theatre: "2", showtime: ["7:20", "8:40", "13:30","17:30"], imgurl: `url(${"./moviePoster/toystory.jpg"})`},
+    {date: new Date("11/19/2019"), title: "Batman", theatre: "3", showtime: ["8:30", "9:30", "11:00"], imgurl: `url(${"./moviePoster/batman.jpg"})`},
+    {date: new Date("11/20/2019"), title: "Starwars", theatre: "1", showtime: ["8:30", "9:30", "12:30","16:30"], imgurl:`url(${"./moviePoster/starwars.jpg"})`},
+    {date: new Date("11/20/2019"), title: "Harry Potter", theatre: "2", showtime: ["7:20","17:30"],imgurl:`url(${"./moviePoster/harrypotter.jpg"})`},
+    {date: new Date("11/20/2019"), title: "Maze Runner", theatre: "3", showtime: ["8:30", "9:30", "11:00"],imgurl:`url(${"./moviePoster/mazerunner.jpg"})`}
 ];
 
 export default function Movie() {
   const classes = useStyles();
   const theme = useTheme();
+  const [selectedMovie, setSelectedMovie] = React.useState('');
+  const inputLabel = React.useRef(null);
+
+  const handleChangeSelectedMovie = event => {
+    setSelectedMovie(event.target.value);
+  };
+
   const [single, setSingle] = React.useState(null);
   const handleChangeSingle = value => {
     setSingle(value);
@@ -450,9 +478,7 @@ export default function Movie() {
     })
   };
 
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("2019-11-19")
-  );
+  const [selectedDate, setSelectedDate] = React.useState(new Date("11/19/2019"));
 
   const handleDateChange = date => {
     setSelectedDate(date);
@@ -462,71 +488,31 @@ export default function Movie() {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Toolbar className={classes.toolbar}>
-          <Button size="small" style={{ color: bgColors.White }}>
-            Write a Review
-          </Button>
-          <Typography
-            style={{
-              color: bgColors.White,
-            }}
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Minor Cineplex
-          </Typography>
-          <IconButton>
-            <SearchIcon style={{ color: bgColors.White }} />
-          </IconButton>
-          <Button
-            variant="outlined"
-            size="small"
-            style={{
-              color: bgColors.White,
-              backgroundColor: bgColors.Black
-            }}
-          >
-            Sign up
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            style={{
-              color: bgColors.White,
-              backgroundColor: bgColors.Black
-            }}
-          >
-            Login
-          </Button>
-        </Toolbar>
-        <Toolbar
-          component="nav"
-          variant="dense"
-          className={classes.toolbarSecondary}
-        >
-          {buttons.map(({ label, path }) => (
-            <Link
-              style={{ color: bgColors.White }}
-              color="inherit"
-              noWrap
-              key={label}
-              variant="body2"
-              href={path}
-              className={classes.toolbarLink}
-            >
-              {label}
-            </Link>
-          ))}
-        </Toolbar>
+        <Header/>
         <main>
           {/* Main featured post */}
           {/* End main featured post */}
           {/* Sub featured posts */}
           <div className={classes.root}>
+            {/* <div>
+              <FormControl className={classes.formControl}>
+            <InputLabel id="demo-simple-select-helper-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={selectedMovie}
+              onChange={handleChangeSelectedMovie}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+            <FormHelperText>Some important helper text</FormHelperText>
+          </FormControl>
+          </div> */}
             <NoSsr marginBottom>
               <Select
                 classes={classes}
@@ -558,9 +544,15 @@ export default function Movie() {
                       "aria-label": "change date"
                     }}
                   />
+                              <Grid container justify="space-around">
+                                {/* <Typography> {single}</Typography> */}
+            </Grid>
                 </Grid>
               </MuiPickersUtilsProvider>
             </NoSsr>
+            {/* <Grid container justify="space-around">
+            {single}
+            </Grid> */}
             <Grid container justify="space-around">
               <Button
                 variant="contained"
@@ -580,17 +572,19 @@ export default function Movie() {
                 padding: "5vh"
               }}
             >
-              <Typography>{selectedDate.getTime}</Typography>
-              {movie.filter(({date}) => (date.getDate === Date("2019-11-20").getDate)).map(({date,title,theatre, showtime}) => (
+              {/* {movie.filter(({title}) => ("Toystory" == title)).map(({date,title,theatre, showtime}) => ( */}
+              {movie.filter(movie => movie.date.toLocaleDateString() === selectedDate.toLocaleDateString()).map(({date,title,theatre, showtime, imgurl}) => (
               <Grid
                 container
                 style={{ Height: "40vh", marginBottom: "2vh" }}
               >
-                <Grid item xs={3}>
-                  <Paper className={classes.paperImage}></Paper>
+                <Grid item>
+                  <Paper className={classes.paperImage} style ={{backgroundImage:imgurl}}></Paper>
                 </Grid>
                 <Grid item xs={9}>
-<Paper className={classes.paperTitle}>{title}</Paper>
+                  <Paper className={classes.paperTitle}>
+                    <Typography variant = "h4">{title}</Typography>
+                  </Paper>
                   <Paper className={classes.paperTheatre}>{theatre}</Paper>
       
                   <Paper className={classes.paperDay}>

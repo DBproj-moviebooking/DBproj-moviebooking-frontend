@@ -121,11 +121,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
-const link = ["/homepage", "/movie", "/cinema", "/souvenir"];
 const buttons = [
   { label: "Homepage", path: "./" },
-  { label: "Movies", path: "/movies" },
+  { label: "Movies", path: "/movie" },
   { label: "Cinemas", path: "/cinema" },
   { label: "Souvenirs", path: "/souvenir" }
 ];

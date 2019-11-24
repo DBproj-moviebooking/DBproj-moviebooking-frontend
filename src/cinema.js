@@ -8,18 +8,12 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Hidden from "@material-ui/core/Hidden";
 import Link from "@material-ui/core/Link";
 import Button from "@material-ui/core/Button";
-import Divider from "@material-ui/core/Divider";
 import Container from "@material-ui/core/Container";
 import Checkbox from '@material-ui/core/Checkbox';
-import Header from "./utils/Header";
-import { bgcolor } from "@material-ui/system";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Header from "./Header";
 
 function Copyright() {
   return (
@@ -95,8 +89,22 @@ const useStyles = makeStyles(theme => ({
     textAlign:"center",
     justifyContent: "space-between"
   },
-  mainButton: {
+  seatConfirm: {
     width: "10vh",
+    height: "10vh",
+    margin:theme.spacing(1),
+    backgroundColor: bgColors.White,
+    color:"black",
+    display: "flex",
+    justifyContent: "center",
+    textAlign:"center",
+    flexGrow: 1
+  },
+
+  mainButton: {
+    marginTop: theme.spacing(4),
+    width: "40vh",
+    height: "10vh",
     fontWeight: "Bold",
     backgroundColor: bgColors.Ltgreen,
     color: "white",
@@ -115,6 +123,7 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `url(${"./Ryan_Gosling.jpg"})`,
     backgroundSize: "cover",
     height: "30vh",
+    width: "20vh",
     position: "relative",
     margin: ".5vh"
   },
@@ -156,8 +165,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const sections = ["Homepage", "Movies", "Cinemas", "Souvenirs"];
-const link = ["/", "/movie", "/cinema", "/souvenir"];
 const buttons = [
   { label: "Homepage", path: "/homepage" },
   { label: "Movies", path: "/movie" },
@@ -165,90 +172,105 @@ const buttons = [
   { label: "Souvenirs", path: "/souvenir" }
 ];
 
+
 export default function Blog() {
+  const movieTitle = "Avenger";
+  const movieTheatre = "3";
+  const movieTime = "9:00";
+  const numberOfCol = [1,2,3,4,5,6,7,8,9,10,11];
+  const numberOfRow = ["A","B","C","D","E"];
   const classes = useStyles();
   const [state, setState] = React.useState({
-    bookedA1: true,
-    bookedB1: true,
-    bookedC1: false,
-    bookedD1: false,
-    bookedE1: false,
+    Seats: [
+      {col:1,row:"A",booked: true,checked: true},
+      {col:1,row:"B",booked: false,checked: false},
+      {col:1,row:"C",booked: true,checked: true},
+      {col:1,row:"D",booked: false,checked: true},
+      {col:1,row:"E",booked: true,checked: true},
+      
+      {col:2,row:"A",booked: true,checked: true},
+      {col:2,row:"B",booked: false,checked: false},
+      {col:2,row:"C",booked: true,checked: true},
+      {col:2,row:"D",booked: false,checked: true},
+      {col:2,row:"E",booked: true,checked: true},
 
-    checkedA1: true,
-    checkedB1: true,
-    checkedC1: false,
-    checkedD1: false,
-    checkedE1: false,
+      {col:3,row:"A",booked: true,checked: true},
+      {col:3,row:"B",booked: false,checked: false},
+      {col:3,row:"C",booked: true,checked: true},
+      {col:3,row:"D",booked: false,checked: true},
+      {col:3,row:"E",booked: true,checked: true},
+
+      {col:4,row:"A",booked: true,checked: true},
+      {col:4,row:"B",booked: false,checked: false},
+      {col:4,row:"C",booked: true,checked: true},
+      {col:4,row:"D",booked: false,checked: true},
+      {col:4,row:"E",booked: true,checked: true},
+
+      {col:5,row:"A",booked: true,checked: true},
+      {col:5,row:"B",booked: false,checked: false},
+      {col:5,row:"C",booked: true,checked: true},
+      {col:5,row:"D",booked: false,checked: true},
+      {col:5,row:"E",booked: true,checked: true},
+
+      {col:6,row:"A",booked: true,checked: true},
+      {col:6,row:"B",booked: false,checked: false},
+      {col:6,row:"C",booked: true,checked: true},
+      {col:6,row:"D",booked: false,checked: true},
+      {col:6,row:"E",booked: true,checked: true},
+
+      {col:7,row:"A",booked: true,checked: true},
+      {col:7,row:"B",booked: false,checked: false},
+      {col:7,row:"C",booked: true,checked: true},
+      {col:7,row:"D",booked: false,checked: true},
+      {col:7,row:"E",booked: true,checked: true},
+
+      {col:8,row:"A",booked: true,checked: true},
+      {col:8,row:"B",booked: false,checked: false},
+      {col:8,row:"C",booked: true,checked: true},
+      {col:8,row:"D",booked: false,checked: true},
+      {col:8,row:"E",booked: true,checked: true},
+
+      {col:9,row:"A",booked: true,checked: true},
+      {col:9,row:"B",booked: false,checked: false},
+      {col:9,row:"C",booked: true,checked: true},
+      {col:9,row:"D",booked: false,checked: true},
+      {col:9,row:"E",booked: true,checked: true},
+
+      {col:10,row:"A",booked: true,checked: true},
+      {col:10,row:"B",booked: false,checked: false},
+      {col:10,row:"C",booked: true,checked: true},
+      {col:10,row:"D",booked: false,checked: true},
+      {col:10,row:"E",booked: true,checked: true},
+
+      {col:11,row:"A",booked: true,checked: true},
+      {col:11,row:"B",booked: false,checked: false},
+      {col:11,row:"C",booked: true,checked: true},
+      {col:11,row:"D",booked: false,checked: true},
+      {col:11,row:"E",booked: true,checked: true},
+
+  ],
   });
 
-  const handleChange = name => event => {
-    setState({ ...state, [name]:event.target.checked});
+  const handleChange = (col,row) => event => {
+    let Seats = state.Seats.slice();
+    for(let i in Seats){
+      if(Seats[i].row === row & Seats[i].col === col){
+        Seats[i].checked = event.target.checked;
+        setState({Seats});
+        break;
+      }
+    }
+    // setState({ ...state, [name]:event.target.checked});
   };
+
+  const ticketCount = state.Seats.filter(Seats => Seats.checked === true & Seats.booked === false).length;
+  const ticketPrice = 140;
 
   return (
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Toolbar className={classes.toolbar}>
-          <Button size="small" style={{ color: bgColors.White }}>
-            Write a Review
-          </Button>
-          <Typography
-            style={{
-              color: bgColors.White /*, backgroundColor: bgColors.Mintgreen*/
-            }}
-            component="h2"
-            variant="h5"
-            color="inherit"
-            align="center"
-            noWrap
-            className={classes.toolbarTitle}
-          >
-            Minor Cineplex
-          </Typography>
-          <IconButton>
-            <SearchIcon style={{ color: bgColors.White }} />
-          </IconButton>
-          <Button
-            variant="outlined"
-            size="small"
-            style={{
-              color: bgColors.White,
-              backgroundColor: bgColors.Mintgreen
-            }}
-          >
-            Sign up
-          </Button>
-          <Button
-            variant="outlined"
-            size="small"
-            style={{
-              color: bgColors.White,
-              backgroundColor: bgColors.Mintgreen
-            }}
-          >
-            Login
-          </Button>
-        </Toolbar>
-        <Toolbar
-          component="nav"
-          variant="dense"
-          className={classes.toolbarSecondary}
-        >
-          {buttons.map(({ label, path }) => (
-            <Link
-              style={{ color: bgColors.White }}
-              color="inherit"
-              noWrap
-              key={label}
-              variant="body2"
-              href={path}
-              className={classes.toolbarLink}
-            >
-              {label}
-            </Link>
-          ))}
-        </Toolbar>
+      <Header/>
         <main>
           <Paper className={classes.mainCanvas}>
           <Grid
@@ -256,13 +278,13 @@ export default function Blog() {
                 style={{ Height: "30vh", marginBottom: "2vh"}}
                 className={classes.cinema}
               >
-                <Grid item xs={3}>
-                  <Paper className={classes.paperImage}></Paper>
+                <Grid item>
+                  <Paper className={classes.paperImage} style ={{backgroundImage: `url(${"./moviePoster/avenger.jpg"})` }}></Paper>
                 </Grid>
                 <Grid item xs={9}>
-                  <Paper className={classes.paperTitle}>Avenger</Paper>
-                  <Paper className={classes.paperTheatre}>Theatre 1</Paper>
-                  <Paper className={classes.paperTheatre}>8:00-10:20</Paper>
+                  <Paper className={classes.paperTitle}>{movieTitle}</Paper>
+                  <Paper className={classes.paperTheatre}>Theatre {movieTheatre}</Paper>
+                  <Paper className={classes.paperTheatre}>{movieTime}</Paper>
                 </Grid>
               </Grid>
           </Paper>
@@ -275,130 +297,39 @@ export default function Blog() {
                 <Grid item xs={12}>
                   <Paper className = {classes.seatScreen}>Screen</Paper>
                 </Grid>
-                  
                 <Grid item xs={1}>
                     <Card className = {classes.seatRow}></Card>
-                    <Card className = {classes.seatColNav}>A</Card>
-                    <Card className = {classes.seatColNav}>B</Card>
-                    <Card className = {classes.seatColNav}>C</Card>
-                    <Card className = {classes.seatColNav}>D</Card>
-                    <Card className = {classes.seatColNav}>E</Card>
+                    {
+                      numberOfRow.map((row) => (
+                        <Card className = {classes.seatColNav}>{row}</Card>
+                      ))
+                    }
                 </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>1</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>2</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>3</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>4</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>5</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>6</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>7</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid><Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>8</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>9</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>10</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                <Grid item xs={1}>
-                <Container className = {classes.seatCol}>
-                  <Card className = {classes.seatRow}>11</Card>
-                  <FormControlLabel disabled={state.bookedA1} control={<Checkbox checked={state.checkedA1} onChange={handleChange('checkedA1')} value="checkedA1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedB1} control={<Checkbox checked={state.checkedB1} onChange={handleChange('checkedB1')} value="checkedB1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedC1} control={<Checkbox checked={state.checkedC1} onChange={handleChange('checkedC1')} value="checkedC1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedD1} control={<Checkbox checked={state.checkedD1} onChange={handleChange('checkedD1')} value="checkedD1" className = {classes.seatButton}/>}/>
-                  <FormControlLabel disabled={state.bookedE1} control={<Checkbox checked={state.checkedE1} onChange={handleChange('checkedE1')} value="checkedE1" className = {classes.seatButton}/>}/>
-                  </Container>
-                </Grid>
-                
+                {numberOfCol.map((i)=>(
+                  <Grid item xs={1}>
+                  <Container className = {classes.seatCol}>
+                    <Card className = {classes.seatRow}>{i}</Card>
+                    {state.Seats.filter(Seats => Seats.col === i).map((seat) => (
+                          <FormControlLabel 
+                            disabled = {seat.booked} 
+                            control = {<Checkbox checked = {seat.checked} onChange = {handleChange(seat.col,seat.row)}  
+                            className = {classes.seatButton}/>}/>
+                      ))}
+                    </Container>
+                  </Grid>
+                ))}
               </Grid>
+              <Typography variant = "h5">All Seat:</Typography>
+              <Grid container>
+                {state.Seats.filter(Seats => Seats.checked === true & Seats.booked === false).map((seat) =>(
+                  <Grid container className = {classes.seatConfirm}item xs ={1} justify="center"  alignItems="center">
+                    {seat.row}{seat.col}
+                  </Grid>
+                ))}
+              </Grid>
+              <Typography variant = "h5">Price: {ticketCount*ticketPrice}</Typography>
               <Grid container justify="space-around">
               <Button
-                variant="contained"
-                justify="space-around"
                 className={classes.mainButton}
               >
                 Book
