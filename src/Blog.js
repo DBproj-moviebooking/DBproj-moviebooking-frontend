@@ -19,12 +19,14 @@ import Container from "@material-ui/core/Container";
 import Markdown from "./Markdown";
 import Header from "./utils/Header";
 import { TextareaAutosize } from "@material-ui/core";
+import MovieCarousel from "./utils/MovieCarousel";
 
 class Blog extends React.Component {
   render() {
     return (
       <div>
           <Header />
+          <MovieCarousel />
       </div>
   )}
 }
