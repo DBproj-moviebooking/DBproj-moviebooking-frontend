@@ -1,4 +1,5 @@
 import React from "react";
+import axois from "axios";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -24,17 +25,19 @@ import {
 
 const searchDate = new Date();
 
-const suggestions = [
-  { label: "Avenger" },
-  { label: "ToyStory" },
-  { label: "Batman" },
-  { label: "KungFuHustle" },
-].map(suggestion => ({
-  value: suggestion.label,
-  label: suggestion.label
-}));
+const suggestions = []
+
+function getdata(){
+  axois.get('https://dbproj-backend.herokuapp.com/movie').then((res) => {
+    suggestions.map(suggestion =>({
+      value: res.data.data.id,
+      label: res.data.data.name,
+    }))
+  })
+}
 
 function Copyright() {
+  
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
