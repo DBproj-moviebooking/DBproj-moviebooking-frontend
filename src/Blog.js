@@ -19,19 +19,7 @@ import Container from "@material-ui/core/Container";
 import Markdown from "./Markdown";
 import Header from "./Header";
 import { TextareaAutosize } from "@material-ui/core";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import MovieCarousel from "./utils/MovieCarousel";
 
 const bgColors = {
   Grey: "#747474",
@@ -344,7 +332,6 @@ export default function Blog() {
             This website is created only for Database subject purpose. Not for
             profit.
           </Typography>
-          <Copyright />
         </Container>
       </footer>
       {/* End footer */}

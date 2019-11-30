@@ -478,7 +478,7 @@ export default function Movie() {
     })
   };
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date("11/19/2019"));
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = date => {
     setSelectedDate(date);
@@ -616,7 +616,6 @@ export default function Movie() {
           >
             Something here to give the footer a purpose!
           </Typography>
-          <Copyright />
         </Container>
       </footer>
       {/* End footer */}
