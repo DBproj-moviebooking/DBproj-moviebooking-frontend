@@ -478,7 +478,7 @@ export default function Movie() {
     })
   };
 
-  const [selectedDate, setSelectedDate] = React.useState(new Date("11/19/2019"));
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
 
   const handleDateChange = date => {
     setSelectedDate(date);

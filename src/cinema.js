@@ -123,7 +123,6 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `url(${"./Ryan_Gosling.jpg"})`,
     backgroundSize: "cover",
     height: "30vh",
-    width: "20vh",
     position: "relative",
     margin: ".5vh"
   },
@@ -278,8 +277,8 @@ export default function Blog() {
                 style={{ Height: "30vh", marginBottom: "2vh"}}
                 className={classes.cinema}
               >
-                <Grid item>
-                  <Paper className={classes.paperImage} style ={{backgroundImage: `url(${"./moviePoster/avenger.jpg"})` }}></Paper>
+                <Grid item xs={3}>
+                  <Paper className={classes.paperImage}></Paper>
                 </Grid>
                 <Grid item xs={9}>
                   <Paper className={classes.paperTitle}>{movieTitle}</Paper>
